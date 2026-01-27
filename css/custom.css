@@ -1,0 +1,44 @@
+#post blockquote[class],
+.post-content blockquote[class] {
+    font-style: normal !important; /* 强制取消斜体 */
+}
+
+/* ========== “book” 类引用块 ========== */
+/* 浅紫色系，用于书籍、文献等引用 */
+#post blockquote.book,
+.post-content blockquote.book {
+    border-left: 5px solid #c3b1e1; /* 侧边颜色 */
+    background-color: #E6E6FA; /* 底色 */
+    border-radius: 8px;
+    padding: 20px 25px;
+    margin: 20px 0;
+    color: #333; /* 深色文字确保可读性 */
+}
+
+/* ========== “other” 类引用块 ========== */
+/* 浅绿色系，用于其他说明、提示等 */
+#post blockquote.other,
+.post-content blockquote.other {
+    border-left: 5px solid #afe1af; /* 侧边颜色 */
+    background-color: #ecffdc; /* 底色 */
+    border-radius: 8px;
+    padding: 20px 25px;
+    margin: 20px 0;
+    color: #333; /* 深色文字确保可读性 */
+}
+
+/* ========== 深色模式适配 ========== */
+/* 在深色模式下，保持完全相同的颜色，但微调文字颜色以适配深背景 */
+[data-theme="dark"] #post blockquote.book,
+[data-theme="dark"] .post-content blockquote.book {
+    border-left-color: #c3b1e1;
+    background-color: #E6E6FA;
+    color: #222; /* 在深色模式下，保持引用框内文字为深色 */
+}
+
+[data-theme="dark"] #post blockquote.other,
+[data-theme="dark"] .post-content blockquote.other {
+    border-left-color: #afe1af;
+    background-color: #ecffdc;
+    color: #222; /* 在深色模式下，保持引用框内文字为深色 */
+}
