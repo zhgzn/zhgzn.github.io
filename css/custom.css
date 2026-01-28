@@ -42,3 +42,30 @@
     background-color: #ecffdc;
     color: #222; /* 在深色模式下，保持引用框内文字为深色 */
 }
+
+/* ========== 极简“提示框”样式 ========== */
+#post blockquote.tip,
+.post-content blockquote.tip {
+    /* 核心：取消所有侧边条，只保留上边框 */
+    border-left: none !important;
+    border-right: none !important;
+    border-bottom: 1px solid #e0e0e6; /* 保留浅色底边 */
+    border-top: 4px solid #4CAF50; /* 核心：醒目的上边框，绿色示例，可更改 */
+    /* 背景与内边距 */
+    background-color: #f8f9fa; /* 比正文稍浅的底色 */
+    border-radius: 6px; /* 圆角 */
+    padding: 20px 25px; /* 舒适的内边距 */
+    margin: 25px 0; /* 外边距 */
+    /* 文字样式 */
+    color: #333; /* 正文颜色 */
+    font-style: normal; /* 确保不是斜体 */
+}
+
+/* ========== 深色模式适配 ========== */
+[data-theme="dark"] #post blockquote.tip,
+[data-theme="dark"] .post-content blockquote.tip {
+    border-top-color: #66BB6A; /* 深色模式下调整上边框颜色 */
+    background-color: #1a1a1a;
+    border-bottom-color: #444;
+    color: #ccc;
+}
