@@ -171,11 +171,9 @@
     color: #b0b0b0 !important;
 }
 
-/* 增大所有 h5 标题的视觉大小 */
-#post h5,
-.post-content h5 {
-    font-size: 1.1em !important; /* 调整为你觉得合适的大小，1em通常是正文大小 */
-    /* 你还可以调整其他属性，比如颜色、边距 */
+body #post h5.h5-large,
+body .post-content h5.h5-large {
+    font-size: 1.1em !important;
     color: #333;
     margin-top: 1.2em;
     margin-bottom: 0.6em;
@@ -183,8 +181,8 @@
 }
 
 /* 深色模式适配 */
-[data-theme="dark"] #post h5,
-[data-theme="dark"] .post-content h5 {
+[data-theme="dark"] body #post h5.h5-large,
+[data-theme="dark"] body .post-content h5.h5-large {
     color: #ddd;
 }
 
