@@ -192,3 +192,7 @@
 [data-theme="dark"] .line-mid {
     background: linear-gradient(to right, transparent, #888, transparent);
 }
+
+body.indent-paragraphs #article-container p {
+    text-indent: 2em;
+}
