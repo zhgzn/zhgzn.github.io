@@ -171,12 +171,28 @@
     color: #b0b0b0 !important;
 }
 
-/* 创建一个“大号h5”的工具类 */
-.h5-large {
-    font-size: 1.1em !important;
-    color: #333;
-    /* 其他样式... */
+
+/* 通用居中工具类，可用于任何文本元素 */
+.ct {
+    text-align: center !important;
 }
-[data-theme="dark"] .h5-large {
-    color: #ddd;
+
+
+/* 用于突出下方标题的章节分割线 - .line-mid (中性灰色) */
+.line-mid {
+    border: none;
+    height: 2px;
+    /* 核心修改：改为灰色渐变 */
+    background: linear-gradient(to right, transparent, #aaa, transparent);
+    width: 70%;
+    margin: 3em auto 0.8em !important;
+    border-radius: 1px;
+}
+/* 深色模式适配 */
+[data-theme="dark"] .line-mid {
+    background: linear-gradient(to right, transparent, #888, transparent);
+}
+
+body.article-indent #article-container p {
+    text-indent: 2em;
 }
