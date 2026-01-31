@@ -70,3 +70,91 @@
     color: #ccc;
 }
 
+/* ========== 低调“说明框”样式 - .note ========== */
+#post blockquote.note,
+.post-content blockquote.note {
+    /* 核心：无任何深色边框，仅用背景色区分 */
+    border: none !important;
+    /* 使用非常浅的绿色背景，取自.tip的绿色系但更淡 */
+    background-color: rgba(141, 195, 81, 0.08); /* #8dc351 的 8% 透明度 */
+    border-radius: 6px;
+    padding: 18px 22px;
+    margin: 20px 0;
+    color: #555; /* 使用中性灰色文字，确保可读性且不刺眼 */
+    font-style: normal;
+    /* 可选：添加极细微的内部阴影增加一点层次感 */
+    box-shadow: inset 0 0 0 1px rgba(141, 195, 81, 0.05);
+}
+
+/* ========== 深色模式适配 ========== */
+[data-theme="dark"] #post blockquote.note,
+[data-theme="dark"] .post-content blockquote.note {
+    background-color: rgba(141, 195, 81, 0.05); /* 深色下透明度更低 */
+    color: #bbb; /* 文字调整为浅灰色 */
+    box-shadow: inset 0 0 0 1px rgba(141, 195, 81, 0.02);
+}
+
+/* ========== 右侧浮动“说明框”样式 ========== */
+/* 此样式适用于桌面端等宽屏设备 */
+@media screen and (min-width: 768px) {
+    #post blockquote.note.float-right,
+    .post-content blockquote.note.float-right {
+        /* 核心浮动属性 */
+        float: right;
+        clear: right; /* 防止多个浮动框重叠 */
+        /* 固定宽度，给左侧正文留出空间 */
+        width: 280px; /* 你可以调整这个宽度值 */
+        /* 定位和间距 */
+        margin: 5px 0 20px 30px !important; /* 上、右、下、左 */
+        /* 视觉样式调整（保持你之前的底色、圆角等） */
+        background-color: rgba(141, 195, 81, 0.08);
+        border: none;
+        border-radius: 6px;
+        padding: 15px;
+        /* 确保字体大小合适 */
+        font-size: 0.9em;
+        /* 防止父容器高度塌陷的hack */
+        box-sizing: border-box;
+    }
+    /* 可选：为左侧正文区域增加一点右边距，防止文字紧贴浮动框 */
+    #post,
+    .post-content {
+        overflow: auto; /* 触发BFC，包含浮动元素 */
+    }
+}
+
+/* ========== 移动端适配：屏幕变窄时取消浮动，变回上下布局 ========== */
+@media screen and (max-width: 767px) {
+    #post blockquote.note.float-right,
+    .post-content blockquote.note.float-right {
+        float: none;
+        width: auto;
+        margin: 20px 0 !important; /* 恢复为上下外边距 */
+    }
+}
+
+/* ========== 长文本提示框样式 - .tip-long ========== */
+/* 继承 .tip 的所有基础样式，但增加底部边框 */
+#post blockquote.tip-long,
+.post-content blockquote.tip-long {
+    /* 确保拥有 .tip 的全部基础样式 */
+    border-top: 4px solid #4CAF50 !important;
+    border-left: none !important;
+    border-right: none !important;
+    border-bottom: 4px solid #4CAF50 !important; /* 核心：增加底部边框 */
+    background-color: #f8f9fa;
+    border-radius: 6px;
+    padding: 20px 25px;
+    margin: 25px 0;
+    color: #333;
+    font-style: normal;
+}
+
+/* ========== 深色模式适配 ========== */
+[data-theme="dark"] #post blockquote.tip-long,
+[data-theme="dark"] .post-content blockquote.tip-long {
+    border-top-color: #66BB6A !important;
+    border-bottom-color: #66BB6A !important;
+    background-color: #1a1a1a;
+    color: #ccc;
+}
