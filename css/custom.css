@@ -197,3 +197,12 @@
 .indent-this-post p {
     text-indent: 2em;
 }
+
+.indent-this-post h1,
+.indent-this-post h2,
+.indent-this-post h3,
+.indent-this-post h4,
+.indent-this-post h5,
+.indent-this-post h6 {
+    text-align: center !important; /* 使用 !important 确保覆盖其他样式 */
+}
