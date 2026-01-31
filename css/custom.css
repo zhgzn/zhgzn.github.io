@@ -193,6 +193,7 @@
     background: linear-gradient(to right, transparent, #888, transparent);
 }
 
-body.indent-paragraphs #article-container p {
+/* 仅对包裹在 .indent-this-post 内的段落缩进 */
+.indent-this-post p {
     text-indent: 2em;
 }
