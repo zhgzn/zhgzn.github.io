@@ -206,3 +206,8 @@
 .indent-this-post h6 {
     text-align: center !important; /* 使用 !important 确保覆盖其他样式 */
 }
+
+/* 右对齐工具类 */
+.right-al {
+    text-align: right !important;
+}
