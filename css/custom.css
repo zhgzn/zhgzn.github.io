@@ -70,27 +70,25 @@
     color: #ccc;
 }
 
-/* ========== 低调“说明框”样式 - .note ========== */
+/* 更新后的 .note 样式 - 缩小行距与上下边距 */
 #post blockquote.note,
 .post-content blockquote.note {
-    /* 核心：无任何深色边框，仅用背景色区分 */
     border: none !important;
-    /* 使用非常浅的绿色背景，取自.tip的绿色系但更淡 */
-    background-color: rgba(141, 195, 81, 0.08); /* #8dc351 的 8% 透明度 */
+    background-color: rgba(141, 195, 81, 0.08); /* 保持原有的浅绿底色 */
     border-radius: 6px;
-    padding: 18px 22px;
+    /* 调整内边距：上方 下方 | 左侧 右侧 */
+    padding: 12px 22px !important; /* 核心：改小上下内边距（原为18px 22px） */
     margin: 20px 0;
-    color: #555; /* 使用中性灰色文字，确保可读性且不刺眼 */
+    color: #555;
     font-style: normal;
-    /* 可选：添加极细微的内部阴影增加一点层次感 */
     box-shadow: inset 0 0 0 1px rgba(141, 195, 81, 0.05);
 }
 
-/* ========== 深色模式适配 ========== */
+/* 深色模式适配 */
 [data-theme="dark"] #post blockquote.note,
 [data-theme="dark"] .post-content blockquote.note {
-    background-color: rgba(141, 195, 81, 0.05); /* 深色下透明度更低 */
-    color: #bbb; /* 文字调整为浅灰色 */
+    background-color: rgba(141, 195, 81, 0.05);
+    color: #bbb;
     box-shadow: inset 0 0 0 1px rgba(141, 195, 81, 0.02);
 }
 
