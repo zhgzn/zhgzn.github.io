@@ -209,3 +209,35 @@
 .right-al {
     text-align: right !important;
 }
+
+/*在缩进的情况下绝对居中*/
+.indent-this-post p.text-center { text-align: center !important; text-indent: 0 !important; }
+
+/* 集成式类：弱化、居中、紧凑 */
+.muted-center-compact {
+    /* 1. 继承 .muted 的核心样式 */
+    color: #aaa !important;
+    font-size: 0.8em !important;
+    font-style: normal !important;
+
+    /* 2. 实现绝对居中与重置 */
+    text-align: center !important;
+    display: block !important; /* 确保作为块级元素居中 */
+    margin-left: auto !important;
+    margin-right: auto !important;
+    text-indent: 0 !important; /* 关键：强制清除任何可能的首行缩进 */
+
+    /* 3. 缩小与上一个段落的行距（上边距） */
+    margin-top: -1.75em !important; /* 可根据感觉微调，标准段落间距通常为1em或1.5em */
+    margin-bottom: 1em !important; /* 保持与下一个段落的正常距离 */
+
+    /* 可选：添加盒模型计算方式，确保稳定 */
+    box-sizing: border-box !important;
+    padding: 0 !important; /* 确保内边距不影响居中计算 */
+    width: 100%; /* 确保宽度撑满，居中基准是父容器 */
+}
+
+/* 深色模式适配 */
+[data-theme="dark"] .muted-center-compact {
+    color: #b0b0b0 !important;
+}
