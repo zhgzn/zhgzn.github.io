@@ -7,8 +7,8 @@
 /* 浅紫色系，用于书籍、文献等引用 */
 #post blockquote.book,
 .post-content blockquote.book {
-    border-left: 5px solid #c3b1e1; /* 侧边颜色 */
-    background-color: #E6E6FA; /* 底色 */
+    border-left: 5px solid #a9a1b0; /* 侧边颜色 */
+    background-color: #f5f2ee; /* 底色 */
     border-radius: 8px;
     padding: 20px 25px;
     margin: 20px 0;
@@ -19,8 +19,8 @@
 /* 浅绿色系，用于其他说明、提示等 */
 #post blockquote.other,
 .post-content blockquote.other {
-    border-left: 5px solid #afe1af; /* 侧边颜色 */
-    background-color: #ecffdc; /* 底色 */
+    border-left: 5px solid #b48a78; /* 侧边颜色 */
+    background-color: #edf0e2; /* 底色 */
     border-radius: 8px;
     padding: 20px 25px;
     margin: 20px 0;
