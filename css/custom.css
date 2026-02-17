@@ -241,3 +241,33 @@
 [data-theme="dark"] .muted-center-compact {
     color: #b0b0b0 !important;
 }
+
+/* 为单篇文章设置更大的字号和段落首行缩进 */
+.article-larger-font {
+    font-size: 18px;   /* 正文基础字号，可按需调整 */
+    line-height: 1.8;  /* 行高，提升阅读舒适度 */
+}
+
+/* 文章内的普通段落：首行缩进2字符 + 段后间距 */
+.article-larger-font p {
+    text-indent: 2em;  /* 首行缩进两个汉字字符的宽度 */
+    margin: 0 0 1em 0; /* 段落下边距，让段落之间更清晰（可选） */
+}
+
+/* 以下元素不需要缩进，故重置为0 */
+.article-larger-font h1,
+.article-larger-font h2,
+.article-larger-font h3,
+.article-larger-font h4,
+.article-larger-font h5,
+.article-larger-font h6,
+.article-larger-font blockquote,
+.article-larger-font pre,
+.article-larger-font ul,
+.article-larger-font ol,
+.article-larger-font figure,
+.article-larger-font img,
+.article-larger-font .footnote,
+.article-larger-font .small-text {   /* 你之前提到的特殊元素 */
+    text-indent: 0 !important;       /* 确保不缩进，!important 仅为保险，通常不需要 */
+}
