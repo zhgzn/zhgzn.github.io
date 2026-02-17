@@ -244,7 +244,7 @@
 
 /* 为单篇文章设置更大的字号和段落首行缩进 */
 .article-larger-font {
-    font-size: 18px;   /* 正文基础字号，可按需调整 */
+    font-size: 16px;   /* 正文基础字号，可按需调整 */
     line-height: 1.8;  /* 行高，提升阅读舒适度 */
 }
 
