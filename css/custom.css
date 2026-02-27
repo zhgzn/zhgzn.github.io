@@ -19,8 +19,8 @@
 /* 浅绿色系，用于其他说明、提示等 */
 #post blockquote.other,
 .post-content blockquote.other {
-    border-left: 5px solid #b48a78; /* 侧边颜色 */
-    background-color: #edf0e2; /* 底色 */
+    border-left: 5px solid #c8d7b4; /* 侧边颜色 */
+    background-color: #e3e9d7; /* 底色 */
     border-radius: 8px;
     padding: 20px 25px;
     margin: 20px 0;
