@@ -322,3 +322,36 @@
     border-left-color: #b0e0ff;        /* 深色模式下边框稍亮，保持可见性 */
     color: #ccc;                        /* 文字颜色调整为浅色，适配深色背景 */
 }
+
+/* ========== 左侧浮动“提示框”样式 ========== */
+/* 适用于 .tip 元素添加 .float-left 类，使其浮动在左侧，与右侧浮动 note 对称 */
+@media screen and (min-width: 768px) {
+    #post blockquote.tip.float-left,
+    .post-content blockquote.tip.float-left {
+        float: left;
+        clear: left;              /* 防止多个左浮动框重叠 */
+        width: 280px;              /* 与 .note.float-right 保持一致，可根据需要调整 */
+        margin: 5px 30px 20px 0 !important; /* 上、右、下、左：右侧留出间隔，左侧与正文对齐 */
+        padding: 15px;             /* 内边距适当缩小以适应窄栏 */
+        font-size: 0.9em;
+        box-sizing: border-box;
+        /* 边框和背景色由 .tip 本身提供，此处无需重复 */
+    }
+    /* 确保父容器包含浮动 */
+    #post,
+    .post-content {
+        overflow: auto;
+    }
+}
+
+/* 移动端：取消浮动，恢复块级流动 */
+@media screen and (max-width: 767px) {
+    #post blockquote.tip.float-left,
+    .post-content blockquote.tip.float-left {
+        float: none;
+        width: auto;
+        margin: 20px 0 !important;   /* 恢复上下外边距 */
+        padding: 20px 25px;           /* 恢复 .tip 的原始内边距 */
+        font-size: 1em;               /* 恢复默认字体大小 */
+    }
+}
