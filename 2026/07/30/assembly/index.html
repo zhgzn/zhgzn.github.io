@@ -1,13 +1,13 @@
-<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>学习汇编语言 | This is ZHGZN!</title><meta name="author" content="zhgzn"><meta name="copyright" content="zhgzn"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="汇编语言是高级语言和工作语言的基础，它更直接地描述处理器寄存器和内存之间发生的行为。汇编语言不只是学习计算机体系时的必修内容，也是计算机组成与体系的重要学习和实践。 *按照CS61C 2020Fall的课程，我使用RV32I作为具体学习语言。需要注意的是，这可能与目前课程中常用的RV64I有位宽区别。 前置知识CPU、CPU寄存器和内存可以想到，CPU要完成较复杂命令，一定需要一定数量的寄存器在函">
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>学习汇编语言 | This is ZHGZN!</title><meta name="author" content="zhgzn"><meta name="copyright" content="zhgzn"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="汇编语言是高级语言和工作语言的基础，它更直接地描述处理器寄存器和内存之间发生的行为。汇编语言不只是学习计算机体系时的必修内容，也是计算机组成与体系的重要学习和实践。 提示：按照 CS61C 2020 Fall 的课程，我使用 RV32I 作为具体学习语言。需要注意的是，这可能与目前课程中常用的 RV64I 有位宽区别。  前置知识CPU、CPU寄存器和内存可以想到，CPU要完成较复杂命令，一定">
 <meta property="og:type" content="article">
 <meta property="og:title" content="学习汇编语言">
 <meta property="og:url" content="https://zhgzn.cc/2026/07/30/assembly/index.html">
 <meta property="og:site_name" content="This is ZHGZN!">
-<meta property="og:description" content="汇编语言是高级语言和工作语言的基础，它更直接地描述处理器寄存器和内存之间发生的行为。汇编语言不只是学习计算机体系时的必修内容，也是计算机组成与体系的重要学习和实践。 *按照CS61C 2020Fall的课程，我使用RV32I作为具体学习语言。需要注意的是，这可能与目前课程中常用的RV64I有位宽区别。 前置知识CPU、CPU寄存器和内存可以想到，CPU要完成较复杂命令，一定需要一定数量的寄存器在函">
+<meta property="og:description" content="汇编语言是高级语言和工作语言的基础，它更直接地描述处理器寄存器和内存之间发生的行为。汇编语言不只是学习计算机体系时的必修内容，也是计算机组成与体系的重要学习和实践。 提示：按照 CS61C 2020 Fall 的课程，我使用 RV32I 作为具体学习语言。需要注意的是，这可能与目前课程中常用的 RV64I 有位宽区别。  前置知识CPU、CPU寄存器和内存可以想到，CPU要完成较复杂命令，一定">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://zhgzn.cc/img/me.png">
 <meta property="article:published_time" content="2026-07-30T13:57:44.000Z">
-<meta property="article:modified_time" content="2026-07-30T14:00:30.570Z">
+<meta property="article:modified_time" content="2026-07-30T14:51:25.813Z">
 <meta property="article:author" content="zhgzn">
 <meta property="article:tag" content="zhgzn">
 <meta property="article:tag" content="CS">
@@ -19,7 +19,7 @@
   "url": "https://zhgzn.cc/2026/07/30/assembly/",
   "image": "https://zhgzn.cc/img/me.png",
   "datePublished": "2026-07-30T13:57:44.000Z",
-  "dateModified": "2026-07-30T14:00:30.570Z",
+  "dateModified": "2026-07-30T14:51:25.813Z",
   "author": [
     {
       "@type": "Person",
@@ -160,69 +160,205 @@
   isHighlightShrink: false,
   isToc: true,
   pageType: 'post'
-}</script><link rel="stylesheet" href="/css/custom.css"><meta name="generator" content="Hexo 7.3.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="/img/me.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data text-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">10</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">8</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><span class="site-page group"><i class="fa-fw fas fa-th-large"></i><span> 板块</span><i class="fas fa-chevron-down"></i></span><ul class="menus_item_child"><li><a class="site-page child" href="/zhgzn/"><i class="fa-fw fas fa-chess-knight"></i><span> zhgzn</span></a></li><li><a class="site-page child" href="/links/"><i class="fa-fw fas fa-handshake"></i><span> friends, i'm waiting for you</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/casual/"><i class="fa-fw fas fa-pen-nib"></i><span> 杂记</span></a></div><div class="menus_item"><a class="site-page" href="/diary/"><i class="fa-fw fas fa-book-open"></i><span> 日记</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><img class="site-icon" src="/img/me_clean.png" alt="Logo"><span class="site-name">This is ZHGZN!</span></a><a class="nav-page-title" href="/"><span class="site-name">学习汇编语言</span><span class="site-name"><i class="fa-solid fa-circle-arrow-left"></i><span>  返回首页</span></span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><span class="site-page group"><i class="fa-fw fas fa-th-large"></i><span> 板块</span><i class="fas fa-chevron-down"></i></span><ul class="menus_item_child"><li><a class="site-page child" href="/zhgzn/"><i class="fa-fw fas fa-chess-knight"></i><span> zhgzn</span></a></li><li><a class="site-page child" href="/links/"><i class="fa-fw fas fa-handshake"></i><span> friends, i'm waiting for you</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/casual/"><i class="fa-fw fas fa-pen-nib"></i><span> 杂记</span></a></div><div class="menus_item"><a class="site-page" href="/diary/"><i class="fa-fw fas fa-book-open"></i><span> 日记</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="post-info"><h1 class="post-title">学习汇编语言</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2026-07-30T13:57:44.000Z" title="发表于 2026-07-30 21:57:44">2026-07-30</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2026-07-30T14:00:30.570Z" title="更新于 2026-07-30 22:00:30">2026-07-30</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">浏览量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span><span class="post-meta-separator">|</span><span class="post-meta-commentcount"><i class="far fa-comments fa-fw post-meta-icon"></i><span class="post-meta-label">评论数:</span><a href="/2026/07/30/assembly/#post-comment"><span class="waline-comment-count" data-path="/2026/07/30/assembly/"><i class="fa-solid fa-spinner fa-spin"></i></span></a></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><p>汇编语言是高级语言和工作语言的基础，它更直接地描述处理器寄存器和内存之间发生的行为。汇编语言不只是学习计算机体系时的必修内容，也是计算机组成与体系的重要学习和实践。</p>
-<p>*按照CS61C 2020Fall的课程，我使用RV32I作为具体学习语言。需要注意的是，这可能与目前课程中常用的RV64I有位宽区别。</p>
+}</script><link rel="stylesheet" href="/css/custom.css"><meta name="generator" content="Hexo 7.3.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="/img/me.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data text-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">10</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">8</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><span class="site-page group"><i class="fa-fw fas fa-th-large"></i><span> 板块</span><i class="fas fa-chevron-down"></i></span><ul class="menus_item_child"><li><a class="site-page child" href="/zhgzn/"><i class="fa-fw fas fa-chess-knight"></i><span> zhgzn</span></a></li><li><a class="site-page child" href="/links/"><i class="fa-fw fas fa-handshake"></i><span> friends, i'm waiting for you</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/casual/"><i class="fa-fw fas fa-pen-nib"></i><span> 杂记</span></a></div><div class="menus_item"><a class="site-page" href="/diary/"><i class="fa-fw fas fa-book-open"></i><span> 日记</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><img class="site-icon" src="/img/me_clean.png" alt="Logo"><span class="site-name">This is ZHGZN!</span></a><a class="nav-page-title" href="/"><span class="site-name">学习汇编语言</span><span class="site-name"><i class="fa-solid fa-circle-arrow-left"></i><span>  返回首页</span></span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><span class="site-page group"><i class="fa-fw fas fa-th-large"></i><span> 板块</span><i class="fas fa-chevron-down"></i></span><ul class="menus_item_child"><li><a class="site-page child" href="/zhgzn/"><i class="fa-fw fas fa-chess-knight"></i><span> zhgzn</span></a></li><li><a class="site-page child" href="/links/"><i class="fa-fw fas fa-handshake"></i><span> friends, i'm waiting for you</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/casual/"><i class="fa-fw fas fa-pen-nib"></i><span> 杂记</span></a></div><div class="menus_item"><a class="site-page" href="/diary/"><i class="fa-fw fas fa-book-open"></i><span> 日记</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="post-info"><h1 class="post-title">学习汇编语言</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2026-07-30T13:57:44.000Z" title="发表于 2026-07-30 21:57:44">2026-07-30</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2026-07-30T14:51:25.813Z" title="更新于 2026-07-30 22:51:25">2026-07-30</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">浏览量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span><span class="post-meta-separator">|</span><span class="post-meta-commentcount"><i class="far fa-comments fa-fw post-meta-icon"></i><span class="post-meta-label">评论数:</span><a href="/2026/07/30/assembly/#post-comment"><span class="waline-comment-count" data-path="/2026/07/30/assembly/"><i class="fa-solid fa-spinner fa-spin"></i></span></a></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><div class="indent-this-post assembly-post">
+
+<p>汇编语言是高级语言和工作语言的基础，它更直接地描述处理器寄存器和内存之间发生的行为。汇编语言不只是学习计算机体系时的必修内容，也是计算机组成与体系的重要学习和实践。</p>
+<p><strong>提示：按照 CS61C 2020 Fall 的课程，我使用 <code class="assembly-inline-highlight"><span class="literal">RV32I</span></code> 作为具体学习语言。需要注意的是，这可能与目前课程中常用的 <code class="assembly-inline-highlight"><span class="literal">RV64I</span></code> 有位宽区别。</strong></p>
+<hr>
 <h1 id="前置知识"><a href="#前置知识" class="headerlink" title="前置知识"></a>前置知识</h1><h2 id="CPU、CPU寄存器和内存"><a href="#CPU、CPU寄存器和内存" class="headerlink" title="CPU、CPU寄存器和内存"></a>CPU、CPU寄存器和内存</h2><p>可以想到，CPU要完成较复杂命令，一定需要一定数量的寄存器在函数周期或工作周期内暂时保存数据。这些寄存器直接通过导线和CPU其他部分连接，以光速的响应速度参与CPU任务，这与现代处理器频率的量级相匹配。同时，为了响应得足够快，寄存器几乎不应该出现在距离CPU其他部件20cm以上的位置；因此，它被整合在CPU内部，使用接近CPU的宝贵物理空间。在上述约束下，一个cpu被规定包含32个寄存器。</p>
-<p>32个32bits寄存器只能储存1024位数值，显然这不能满足现代处理器的需要。采用快速响应技术的内存，即RAM，就是在为CPU提供大量可以较快响应的存储空间的需求下出现的。当寄存器不得不被更新、数据不得不被保存时，数据就需要被保存到相对充裕的内存中，稍后再重新加载到寄存器。但内存的响应速度仍比直接连接在CPU中的寄存器慢1~2个数量级。因此，优化汇编代码和优化编译器的主要工作就是提高寄存器的利用率、减少内存访问。</p>
-<h2 id="内存栈与字节序"><a href="#内存栈与字节序" class="headerlink" title="内存栈与字节序"></a>内存栈与字节序</h2><p>由于具体工作中对于灵活访问和释放存储空间的需要，栈成为了组织内存理想的数据结构。但内存中不只有栈，也在堆中保存着全局变量、汇编指令等其他数据，这些数据从内存低端，即0x00000000开始向高位排列。而栈从0xFFFFFFFF开始向低位排列，直到堆栈接近时，程序会被系统因栈溢出风险阻断。</p>
+<p>32个<code class="assembly-inline-highlight"><span class="number">32</span> <span class="type">bits</span></code>寄存器只能储存<code class="assembly-inline-highlight"><span class="number">1024</span> <span class="type">bits</span></code>数值，显然这不能满足现代处理器的需要。采用快速响应技术的内存，即RAM，就是在为CPU提供大量可以较快响应的存储空间的需求下出现的。当寄存器不得不被更新、数据不得不被保存时，数据就需要被保存到相对充裕的内存中，稍后再重新加载到寄存器。但内存的响应速度仍比直接连接在CPU中的寄存器慢1~2个数量级。因此，优化汇编代码和优化编译器的主要工作就是提高寄存器的利用率、减少内存访问。</p>
+<h2 id="内存栈与字节序"><a href="#内存栈与字节序" class="headerlink" title="内存栈与字节序"></a>内存栈与字节序</h2><p>由于具体工作中对于灵活访问和释放存储空间的需要，栈成为了组织内存理想的数据结构。但内存中不只有栈，也在堆中保存着全局变量、汇编指令等其他数据，这些数据从内存低端，即<code class="assembly-inline-highlight"><span class="number">0x00000000</span></code>开始向高位排列。而栈从<code class="assembly-inline-highlight"><span class="number">0xFFFFFFFF</span></code>开始向低位排列，直到堆栈接近时，程序会被系统因栈溢出风险阻断。</p>
 <p>字节序(endianness)的英文名字来自于《格列佛游记》的小人国被赋予政治意义的争议，鸡蛋应被从较大或较小的哪一侧敲开，中两派对立的名字中得到，big-endians主张敲大头，little-endians主张敲小头。在字节序语境里，它们被翻译为大端排序和小端排序。此背景暗示了两种内存排序方法并无优劣之差别。</p>
-<p>此外，8bits被确定为1byte与ASCII码是7bits有关，这也解释了“字节”作为保存一个“字”的长度的名称含义。1byte是计算机寻址和储存的最小单元。所以，当保存一个32bits的标准长度的数据时，我们总需要把它拆为4bytes。对于一条数据0x12345678，这就引起了内存中最低的1byte应该放0x12还是0x78的不同。</p>
-<p>|   数据   | 0x 12 34 56 78 |<br>| 大端排序 |    12 34 56 78 |<br>| 小端排序 |    78 56 34 12 |<br>| 内存地址 |  0x100 … 0x103 | </p>
-<p>大端排序符合人类的读写直觉，却未必照顾了计算机。对于计算机来说，小端排序将数值低位置于内存低位，造成了计算的方便。因此，个人计算机和偏于计算任务的计算机通常采用小端排序。RV32I采用的是小端排序。另一方面，大端排序则为比较提供了方便。</p>
+<p>此外，<code class="assembly-inline-highlight"><span class="number">8</span> <span class="type">bits</span></code>被确定为<code class="assembly-inline-highlight"><span class="number">1</span> <span class="type">byte</span></code>与ASCII码是<code class="assembly-inline-highlight"><span class="number">7</span> <span class="type">bits</span></code>有关，这也解释了“字节”作为保存一个“字”的长度的名称含义。<code class="assembly-inline-highlight"><span class="number">1</span> <span class="type">byte</span></code>是计算机寻址和储存的最小单元。所以，当保存一个<code class="assembly-inline-highlight"><span class="number">32</span> <span class="type">bits</span></code>的标准长度的数据时，我们总需要把它拆为<code class="assembly-inline-highlight"><span class="number">4</span> <span class="type">bytes</span></code>。对于一条数据<code class="assembly-inline-highlight"><span class="number">0x12345678</span></code>，这就引起了内存中最低的<code class="assembly-inline-highlight"><span class="number">1</span> <span class="type">byte</span></code>应该放<code class="assembly-inline-highlight"><span class="number">0x12</span></code>还是<code class="assembly-inline-highlight"><span class="number">0x78</span></code>的不同。</p>
+<p class="endian-table-caption">32 位数据 <code class="assembly-inline-highlight"><span class="number">0x12345678</span></code> 的内存字节布局</p>
+
+<table>
+<thead>
+<tr>
+<th align="left">字节序 &#x2F; 内存地址</th>
+<th align="center"><code class="assembly-inline-highlight"><span class="number">0x100</span></code>（低地址）</th>
+<th align="center"><code class="assembly-inline-highlight"><span class="number">0x101</span></code></th>
+<th align="center"><code class="assembly-inline-highlight"><span class="number">0x102</span></code></th>
+<th align="center"><code class="assembly-inline-highlight"><span class="number">0x103</span></code>（高地址）</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">大端排序</td>
+<td align="center"><code class="assembly-inline-highlight"><span class="number">0x12</span></code></td>
+<td align="center"><code class="assembly-inline-highlight"><span class="number">0x34</span></code></td>
+<td align="center"><code class="assembly-inline-highlight"><span class="number">0x56</span></code></td>
+<td align="center"><code class="assembly-inline-highlight"><span class="number">0x78</span></code></td>
+</tr>
+<tr>
+<td align="left">小端排序</td>
+<td align="center"><code class="assembly-inline-highlight"><span class="number">0x78</span></code></td>
+<td align="center"><code class="assembly-inline-highlight"><span class="number">0x56</span></code></td>
+<td align="center"><code class="assembly-inline-highlight"><span class="number">0x34</span></code></td>
+<td align="center"><code class="assembly-inline-highlight"><span class="number">0x12</span></code></td>
+</tr>
+</tbody></table>
+<p>大端排序符合人类的读写直觉，却未必照顾了计算机。对于计算机来说，小端排序将数值低位置于内存低位，造成了计算的方便。因此，个人计算机和偏于计算任务的计算机通常采用小端排序。<code class="assembly-inline-highlight"><span class="literal">RV32I</span></code>采用的是小端排序。另一方面，大端排序则为比较提供了方便。</p>
 <p>要编写需要描述硬件、描述寄存器和内存信息流的汇编代码，理解内存的数据结构是绝对必要的。</p>
+<br>
+<hr class="line-mid">
+
 <h1 id="从一个基础的汇编程序开始"><a href="#从一个基础的汇编程序开始" class="headerlink" title="从一个基础的汇编程序开始"></a>从一个基础的汇编程序开始</h1><p>此范例来自于CS61C 2020Fall Lec08.3，将含20个元素的数组中的每个元素相加：</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> A[<span class="number">20</span>];</span><br><span class="line"><span class="type">int</span> sum = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; <span class="number">20</span>; i++)</span><br><span class="line">    sum += A[i];</span><br></pre></td></tr></table></figure>
 
 <p>它被翻译为：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">    add x9, x8, x0</span><br><span class="line">    add x10, x0, x0</span><br><span class="line">    add x11, x0, x0</span><br><span class="line">    addi x13, x0, 20</span><br><span class="line">Loop:</span><br><span class="line">    bge x11, x13, Done</span><br><span class="line">    lw x12, 0(x9)</span><br><span class="line">    add x10, x10, x12</span><br><span class="line">    addi x9, x9, 4 </span><br><span class="line">    addi x11, x11, 1</span><br><span class="line">    j Loop</span><br><span class="line">Done:    </span><br></pre></td></tr></table></figure>
+<figure class="highlight mipsasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">    <span class="keyword">add </span>x9, x8, x0</span><br><span class="line">    <span class="keyword">add </span>x10, x0, x0</span><br><span class="line">    <span class="keyword">add </span>x11, x0, x0</span><br><span class="line">    <span class="keyword">addi </span>x13, x0, <span class="number">20</span></span><br><span class="line"><span class="symbol">Loop:</span></span><br><span class="line">    <span class="keyword">bge </span>x11, x13, Done</span><br><span class="line">    <span class="keyword">lw </span>x12, <span class="number">0</span>(x9)</span><br><span class="line">    <span class="keyword">add </span>x10, x10, x12</span><br><span class="line">    <span class="keyword">addi </span>x9, x9, <span class="number">4</span> </span><br><span class="line">    <span class="keyword">addi </span>x11, x11, <span class="number">1</span></span><br><span class="line">    <span class="keyword">j </span>Loop</span><br><span class="line"><span class="symbol">Done:</span>    </span><br></pre></td></tr></table></figure>
 
 <p>它的含义是：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">    将保存数组第一个数据地址的x8复制到x9</span><br><span class="line">    将代表sum的寄存器x10初始化为0</span><br><span class="line">    将代表i的寄存器x11初始化为0</span><br><span class="line">    将代表i上界的寄存器x13初始化为20</span><br><span class="line">跳转点Loop</span><br><span class="line">    如果x11的值大于等于x13的值（i达到上界）就跳转到Done</span><br><span class="line">    将内存中x9保存地址存储的值加载到x12</span><br><span class="line">    用x10和x12的值相加的和更新x10</span><br><span class="line">    使x9保存的地址指向下一个数据</span><br><span class="line">    将x11增加1</span><br><span class="line">    跳转到Loop位置</span><br><span class="line">跳转点Done</span><br></pre></td></tr></table></figure>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">    将保存数组第一个数据地址的x8复制到x9</span><br><span class="line">    将代表sum的寄存器x10初始化为0</span><br><span class="line">    将代表i的寄存器x11初始化为0</span><br><span class="line">    将代表i上界的寄存器x13初始化为20</span><br><span class="line">跳转点Loop</span><br><span class="line">    如果x11的值大于等于x13的值（i达到上界）就跳转到Done</span><br><span class="line">    将内存中x9保存地址存储的值加载到x12</span><br><span class="line">    用x10和x12的值相加的和更新x10</span><br><span class="line">    使x9保存的地址指向下一个数据</span><br><span class="line">    将x11增加1</span><br><span class="line">    跳转到Loop位置</span><br><span class="line">跳转点Done</span><br></pre></td></tr></table></figure>
 
 <p>对照C程序的内容，此汇编程序及其语句含义应该包含相当丰富的设计思想和语法知识。为了理解其中的奥义，先理解指令的格式和设计思想是必要的。</p>
+<br>
+<hr class="line-mid">
+
 <h1 id="六种指令"><a href="#六种指令" class="headerlink" title="六种指令"></a>六种指令</h1><p>未拓展的RISC-V包含六种基础指令格式。为了对RISC-V建立基本的印象，在认识每一种指令格式的一两个基础指令的同时理解指令的设计思想应该是有效且轻松的。</p>
 <h2 id="add-sub-R-Register-型指令"><a href="#add-sub-R-Register-型指令" class="headerlink" title="add &amp; sub R(Register)型指令"></a>add &amp; sub R(Register)型指令</h2><p>汇编语言描述硬件行为。这一点在寄存器加法这一最常用和最基础指令上的体现为，这条指令指出了：对第一个源寄存器和第二个源寄存器作加法操作，保存在目标寄存器中；如：</p>
-<p><code>add x10, x12, x13</code></p>
-<p>表示将x12和x13寄存器中存储的数值相加，保存在x10寄存器中。整个过程不关乎变量的赋值，而是描述了机器行为。</p>
+<p><code class="assembly-inline-highlight"><span class="keyword">add</span> <span class="built_in">x10</span>, <span class="built_in">x12</span>, <span class="built_in">x13</span></code></p>
+<p>表示将<code class="assembly-inline-highlight"><span class="built_in">x12</span></code>和<code class="assembly-inline-highlight"><span class="built_in">x13</span></code>寄存器中存储的数值相加，保存在<code class="assembly-inline-highlight"><span class="built_in">x10</span></code>寄存器中。整个过程不关乎变量的赋值，而是描述了机器行为。</p>
 <p>此外，采取三个寄存器描述此过程，而非复用其中一个加数的寄存器，将其更新为和，或采用更简单或更复杂的指令形式也是经过指令长度和程序长度的综合考虑决定的。</p>
 <p>相似地，减法被规定为：</p>
-<p><code>sub x10, x12, x13</code></p>
-<p>此指令表示将x12存储的值于x13存储的值的差保存在x10中。相比加法减法只是多考虑了被减数和减数的不可交换。</p>
-<h2 id="addi-I-Immediate-型指令"><a href="#addi-I-Immediate-型指令" class="headerlink" title="addi I(Immediate)型指令"></a>addi I(Immediate)型指令</h2><p>addi也执行加法操作：</p>
-<p><code>addi x10, x12, 5</code></p>
-<p>表示将x12寄存器存储的值加上5，将和保存在x10寄存器中。</p>
-<p>其中直接用到的数字5被称为立即数，因为它可以从指令中读出，“立即”被用于操作。“立即”是相对于没有立即数运算的情况而言的。以加法为例，如果只使用寄存器加法，寄存器需要先从内存里加载一个数值5，才可以进行运算。考虑到访问内存花费的时间成本将增长两个数量级、保存数值还需要额外寄存器，专门设计一个立即数加法是十分值得的。</p>
-<p>很多寄存器（R型）指令都有其对应的立即数（I型）指令，其指令名往往只需在原指令后添加i，并使最后一个源寄存器换为立即数。但不是每一条寄存器指令都需要其对应的立即数指令，如在定义addi后，假设的“subi”就变得无意义，因为立即数是一个第二型补码(2’s compliment)整数，可以表示负数加法。</p>
-<h2 id="lw-L-Load-型指令"><a href="#lw-L-Load-型指令" class="headerlink" title="lw L(Load)型指令"></a>lw L(Load)型指令</h2><p>lw的数据流方向是从内存到CPU寄存器，换言之，它将内存中的数据加载到寄存器。在前面的例子中，在得到了数组A的地址后，事实上它由函数参数得到，程序便从这一地址出发按照4bytes的长度间隔在内存中寻找线性排列的数组A的每个元素，将其在循环中逐个加载到寄存器。lw等L型指令的基础语法是：</p>
-<p><code>lw x10, 4(x9)</code></p>
-<p>其中，x10是目标寄存器，x9是源寄存器，表示将x9中的数据理解为内存地址，取此地址与偏移量(offset)，即4，的和得到目标地址，将内存的目标地址中存储的数据加载到x10寄存器。即：</p>
-<p><code>lw rd, imm(rs1)</code><br>$$rd &lt;- Memory[rs1+imm]$$</p>
-<p>其中rd表示destination register，目标寄存器；rs1表示source register1，源寄存器1；imm表示immdiate value，立即数。这是描述一条RISC-V指令的标准写法。</p>
-<p>考虑内存地址的结构，一个内存地址存储着一字节的数据。在32bits环境下，我们通常按照4的倍数填写偏移量。但这不是通解，如在保存图像颜色代码时，一个4bytes通常被两个颜色代码共用。在复杂的情况下，内存的结构应该被小心地维护。</p>
-<p>此外，lw指令名称中的w表示word，1word在RISC-V中被规定为32bits。显然，还存在读取其他位数的L型指令。</p>
-<h2 id="sw-S-Store-型指令"><a href="#sw-S-Store-型指令" class="headerlink" title="sw S(Store)型指令"></a>sw S(Store)型指令</h2><p>sw将寄存器中的数据保存到内存。</p>
-<p><code>sw rs2, imm(rs1)</code><br>$$Memory[rs1+imm] &lt;- rs2$$</p>
+<p><code class="assembly-inline-highlight"><span class="keyword">sub</span> <span class="built_in">x10</span>, <span class="built_in">x12</span>, <span class="built_in">x13</span></code></p>
+<p>此指令表示将<code class="assembly-inline-highlight"><span class="built_in">x12</span></code>存储的值于<code class="assembly-inline-highlight"><span class="built_in">x13</span></code>存储的值的差保存在<code class="assembly-inline-highlight"><span class="built_in">x10</span></code>中。相比加法减法只是多考虑了被减数和减数的不可交换。</p>
+<h2 id="addi-I-Immediate-型指令"><a href="#addi-I-Immediate-型指令" class="headerlink" title="addi I(Immediate)型指令"></a>addi I(Immediate)型指令</h2><p><code class="assembly-inline-highlight"><span class="keyword">addi</span></code>也执行加法操作：</p>
+<p><code class="assembly-inline-highlight"><span class="keyword">addi</span> <span class="built_in">x10</span>, <span class="built_in">x12</span>, <span class="number">5</span></code></p>
+<p>表示将<code class="assembly-inline-highlight"><span class="built_in">x12</span></code>寄存器存储的值加上立即数<code class="assembly-inline-highlight"><span class="number">5</span></code>，将和保存在<code class="assembly-inline-highlight"><span class="built_in">x10</span></code>寄存器中。</p>
+<p>其中直接用到的数字<code class="assembly-inline-highlight"><span class="number">5</span></code>被称为立即数，因为它可以从指令中读出，“立即”被用于操作。“立即”是相对于没有立即数运算的情况而言的。以加法为例，如果只使用寄存器加法，寄存器需要先从内存里加载一个数值<code class="assembly-inline-highlight"><span class="number">5</span></code>，才可以进行运算。考虑到访问内存花费的时间成本将增长两个数量级、保存数值还需要额外寄存器，专门设计一个立即数加法是十分值得的。</p>
+<p>很多寄存器（R型）指令都有其对应的立即数（I型）指令，其指令名往往只需在原指令后添加<code class="assembly-inline-highlight"><span class="variable">i</span></code>，并使最后一个源寄存器换为立即数。但不是每一条寄存器指令都需要其对应的立即数指令，如在定义<code class="assembly-inline-highlight"><span class="keyword">addi</span></code>后，假设的<code class="assembly-inline-highlight"><span class="keyword">subi</span></code>就变得无意义，因为立即数是一个第二型补码(2’s compliment)整数，可以表示负数加法。</p>
+<h2 id="lw-L-Load-型指令"><a href="#lw-L-Load-型指令" class="headerlink" title="lw L(Load)型指令"></a>lw L(Load)型指令</h2><p><code class="assembly-inline-highlight"><span class="keyword">lw</span></code>的数据流方向是从内存到CPU寄存器，换言之，它将内存中的数据加载到寄存器。在前面的例子中，在得到了数组<code class="assembly-inline-highlight"><span class="variable">A</span></code>的地址后，事实上它由函数参数得到，程序便从这一地址出发按照<code class="assembly-inline-highlight"><span class="number">4</span> <span class="type">bytes</span></code>的长度间隔在内存中寻找线性排列的数组<code class="assembly-inline-highlight"><span class="variable">A</span></code>的每个元素，将其在循环中逐个加载到寄存器。<code class="assembly-inline-highlight"><span class="keyword">lw</span></code>等L型指令的基础语法是：</p>
+<p><code class="assembly-inline-highlight"><span class="keyword">lw</span> <span class="built_in">x10</span>, <span class="number">4</span>(<span class="built_in">x9</span>)</code></p>
+<p>其中，<code class="assembly-inline-highlight"><span class="built_in">x10</span></code>是目标寄存器，<code class="assembly-inline-highlight"><span class="built_in">x9</span></code>是源寄存器，表示将<code class="assembly-inline-highlight"><span class="built_in">x9</span></code>中的数据理解为内存地址，取此地址与偏移量<code class="assembly-inline-highlight"><span class="variable">offset</span></code>，即<code class="assembly-inline-highlight"><span class="number">4</span></code>，的和得到目标地址，将内存的目标地址中存储的数据加载到<code class="assembly-inline-highlight"><span class="built_in">x10</span></code>寄存器。即：</p>
+<p><code class="assembly-inline-highlight"><span class="keyword">lw</span> <span class="built_in">rd</span>, <span class="variable">imm</span>(<span class="built_in">rs1</span>)</code></p>
+<math class="assembly-math" display="block" aria-label="rd ← Memory[rs1 + imm]">
+  <mrow>
+    <mi>rd</mi>
+    <mo>←</mo>
+    <mi mathvariant="normal">Memory</mi>
+    <mo>[</mo>
+    <mi>rs1</mi>
+    <mo>+</mo>
+    <mi>imm</mi>
+    <mo>]</mo>
+  </mrow>
+</math>
+
+<p>其中<code class="assembly-inline-highlight"><span class="built_in">rd</span></code>表示destination register，目标寄存器；<code class="assembly-inline-highlight"><span class="built_in">rs1</span></code>表示source register1，源寄存器1；<code class="assembly-inline-highlight"><span class="variable">imm</span></code>表示immdiate value，立即数。这是描述一条RISC-V指令的标准写法。</p>
+<p>考虑内存地址的结构，一个内存地址存储着一字节的数据。在<code class="assembly-inline-highlight"><span class="number">32</span> <span class="type">bits</span></code>环境下，我们通常按照<code class="assembly-inline-highlight"><span class="number">4</span></code>的倍数填写偏移量。但这不是通解，如在保存图像颜色代码时，一个<code class="assembly-inline-highlight"><span class="number">4</span> <span class="type">bytes</span></code>通常被两个颜色代码共用。在复杂的情况下，内存的结构应该被小心地维护。</p>
+<p>此外，<code class="assembly-inline-highlight"><span class="keyword">lw</span></code>指令名称中的<code class="assembly-inline-highlight"><span class="type">w</span></code>表示word，<code class="assembly-inline-highlight"><span class="number">1</span> <span class="type">word</span></code>在RISC-V中被规定为<code class="assembly-inline-highlight"><span class="number">32</span> <span class="type">bits</span></code>。显然，还存在读取其他位数的L型指令。</p>
+<h2 id="sw-S-Store-型指令"><a href="#sw-S-Store-型指令" class="headerlink" title="sw S(Store)型指令"></a>sw S(Store)型指令</h2><p><code class="assembly-inline-highlight"><span class="keyword">sw</span></code>将寄存器中的数据保存到内存。</p>
+<p><code class="assembly-inline-highlight"><span class="keyword">sw</span> <span class="built_in">rs2</span>, <span class="variable">imm</span>(<span class="built_in">rs1</span>)</code></p>
+<math class="assembly-math" display="block" aria-label="Memory[rs1 + imm] ← rs2">
+  <mrow>
+    <mi mathvariant="normal">Memory</mi>
+    <mo>[</mo>
+    <mi>rs1</mi>
+    <mo>+</mo>
+    <mi>imm</mi>
+    <mo>]</mo>
+    <mo>←</mo>
+    <mi>rs2</mi>
+  </mrow>
+</math>
+
 <p>使用存储指令需要维护内存栈。在函数调用的部分再将S型指令作为主角讨论。</p>
-<h2 id="jal-J-Jump-型指令"><a href="#jal-J-Jump-型指令" class="headerlink" title="jal J(Jump)型指令"></a>jal J(Jump)型指令</h2><p>不同于定义函数和类的高级语言的复杂代码结构，汇编代码的结构是简单线性的，即逐条执行指令。仅凭这样的指令执行方式显然安难以完成一些复杂任务。因此汇编代码引入了标签，它不像高级语言的函数调用那样灵活，但也为在线性结构中实现跳转和嵌套赋予了全部可能性。对于指令<code>j</code>，其语法是：</p>
-<p><code>j label</code></p>
-<p>表示下一条指令跳转到<label>所指示的位置。</p>
-<p>label，即标签，是程序中需要定义的定位字符串，如<code>Loop</code>或<code>Done</code>。要定义一个标签，只需要将其字符串名称缀上冒号，置于需要跳转的指令之前。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">    # There are codes here</span><br><span class="line">Back_Here:</span><br><span class="line">    # There are codes here</span><br><span class="line">    j Back_Here</span><br></pre></td></tr></table></figure>
+<h2 id="jal-J-Jump-型指令"><a href="#jal-J-Jump-型指令" class="headerlink" title="jal J(Jump)型指令"></a>jal J(Jump)型指令</h2><p>不同于定义函数和类的高级语言的复杂代码结构，汇编代码的结构是简单线性的，即逐条执行指令。仅凭这样的指令执行方式显然安难以完成一些复杂任务。因此汇编代码引入了标签，它不像高级语言的函数调用那样灵活，但也为在线性结构中实现跳转和嵌套赋予了全部可能性。对于指令<code class="assembly-inline-highlight"><span class="keyword">j</span></code>，其语法是：</p>
+<p><code class="assembly-inline-highlight"><span class="keyword">j</span> <span class="symbol">label</span></code></p>
+<p>表示下一条指令跳转到<code class="assembly-inline-highlight"><span class="symbol">label</span></code>所指示的位置。</p>
+<p><code class="assembly-inline-highlight"><span class="symbol">label</span></code>，即标签，是程序中需要定义的定位字符串，如<code class="assembly-inline-highlight"><span class="symbol">Loop</span></code>或<code class="assembly-inline-highlight"><span class="symbol">Done</span></code>。要定义一个标签，只需要将其字符串名称缀上冒号，置于需要跳转的指令之前。</p>
+<figure class="highlight mipsasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">    <span class="comment"># There are codes here</span></span><br><span class="line"><span class="keyword">Back_Here:</span></span><br><span class="line"><span class="keyword"></span>    <span class="comment"># There are codes here</span></span><br><span class="line">    <span class="keyword">j </span><span class="keyword">Back_Here</span></span><br></pre></td></tr></table></figure>
 
 <p>标签可以出现在跳转或分支指令之前或之后，称为前向引用和后向引用。在书写标签时，退出跳转需要被关注：标签并未将代码分块，代码跳转后仍保持逐条线性运行，直到汇编程序最后一条指令。在了解另一种跳转：分支的B型指令之后，就可以举出很多例子了。</p>
 <h2 id="beq-bne-blt-bge-B-Branch-型指令"><a href="#beq-bne-blt-bge-B-Branch-型指令" class="headerlink" title="beq, bne, blt &amp; bge B(Branch)型指令"></a>beq, bne, blt &amp; bge B(Branch)型指令</h2><p>B型指令用于解决程序中的条件判断。如果两个寄存器中保存的值满足条件，则跳转到标签所在的位置；如果条件不满足，则执行下一条指令。</p>
-<p>其中，<code>beq</code>表示equal，跳转条件为相等；<code>bne</code>表示not equal，跳转条件为不相等；<code>blt</code>表示less than，跳转条件为第一个源寄存器的值小于等于第二个；<code>bge</code>表示greater than or equal，跳转条件为第一个源寄存器的值大于等于第二个。</p>
-<p>它们的格式一致，以<code>beq</code>为例：</p>
-<p><code>beq rs1, rs2, label</code></p>
-<p>关于前面所说的问题，一个例子是，描述if-else情况的指令，如</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">    beq x8, x9, Else</span><br><span class="line">    add x8, x8, x9</span><br><span class="line">    # j Done</span><br><span class="line">Else:</span><br><span class="line">    sub x8, x8, x9</span><br><span class="line">Done:</span><br></pre></td></tr></table></figure>
+<p>其中，<code class="assembly-inline-highlight"><span class="keyword">beq</span></code>表示equal，跳转条件为相等；<code class="assembly-inline-highlight"><span class="keyword">bne</span></code>表示not equal，跳转条件为不相等；<code class="assembly-inline-highlight"><span class="keyword">blt</span></code>表示less than，跳转条件为第一个源寄存器的值小于等于第二个；<code class="assembly-inline-highlight"><span class="keyword">bge</span></code>表示greater than or equal，跳转条件为第一个源寄存器的值大于等于第二个。</p>
+<p>它们的格式一致，以<code class="assembly-inline-highlight"><span class="keyword">beq</span></code>为例：</p>
+<p><code class="assembly-inline-highlight"><span class="keyword">beq</span> <span class="built_in">rs1</span>, <span class="built_in">rs2</span>, <span class="symbol">label</span></code></p>
+<p>关于前面所说的问题，一个例子是，描述<code class="assembly-inline-highlight"><span class="keyword">if</span>-<span class="keyword">else</span></code>情况的指令，如</p>
+<figure class="highlight mipsasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">    <span class="keyword">beq </span>x8, x9, Else</span><br><span class="line">    <span class="keyword">add </span>x8, x8, x9</span><br><span class="line">    <span class="comment"># j Done</span></span><br><span class="line"><span class="symbol">Else:</span></span><br><span class="line">    <span class="keyword">sub </span>x8, x8, x9</span><br><span class="line"><span class="symbol">Done:</span></span><br></pre></td></tr></table></figure>
 
 <p>此汇编程序被期望完成：</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> x, y;</span><br><span class="line"><span class="keyword">if</span> (x == y) &#123;</span><br><span class="line">    x = x + y;</span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    x = x - y;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p>的工作，但目前在<code>j Done</code>被注释的情况下，它不能完成此工作。当x&#x3D;&#x3D;y为真时，x的值将保持不变。这是因为它执行了$R[x8] &lt;- R[x8] + R[x9]$之后，又执行了$R[x8] &lt;- R[x8] - R[x9]$。这是一个常见的问题，所以在汇编代码中实现分类时，结束跳转一定要被关注，即注释行应该被取消注释而存在。</p>
+<p>的工作，但目前在<code class="assembly-inline-highlight"><span class="keyword">j</span> <span class="symbol">Done</span></code>被注释的情况下，它不能完成此工作。当<code class="assembly-inline-highlight"><span class="variable">x</span> == <span class="variable">y</span></code>为真时，<code class="assembly-inline-highlight"><span class="variable">x</span></code>的值将保持不变。这是因为它执行了<math class="assembly-math-inline" aria-label="R[x8] ← R[x8] + R[x9]"><mrow><mi>R</mi><mo>[</mo><mi>x8</mi><mo>]</mo><mo>←</mo><mi>R</mi><mo>[</mo><mi>x8</mi><mo>]</mo><mo>+</mo><mi>R</mi><mo>[</mo><mi>x9</mi><mo>]</mo></mrow></math>之后，又执行了<math class="assembly-math-inline" aria-label="R[x8] ← R[x8] − R[x9]"><mrow><mi>R</mi><mo>[</mo><mi>x8</mi><mo>]</mo><mo>←</mo><mi>R</mi><mo>[</mo><mi>x8</mi><mo>]</mo><mo>−</mo><mi>R</mi><mo>[</mo><mi>x9</mi><mo>]</mo></mrow></math>。这是一个常见的问题，所以在汇编代码中实现分类时，结束跳转一定要被关注，即注释行应该被取消注释而存在。</p>
 <h2 id="U型指令"><a href="#U型指令" class="headerlink" title="U型指令"></a>U型指令</h2><p>U型指令用于直接把一个立即数保存到目标寄存器。这里暂不提及。</p>
+</div>
 </article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="https://zhgzn.cc">zhgzn</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="https://zhgzn.cc/2026/07/30/assembly/">https://zhgzn.cc/2026/07/30/assembly/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来源 <a href="https://zhgzn.cc" target="_blank">This is ZHGZN!</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/zhgzn/">zhgzn</a><a class="post-meta__tags" href="/tags/CS/">CS</a></div><div class="post-share"><div class="social-share" data-image="/img/me.png" data-sites="facebook,x,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><a class="pagination-related full-width" href="/2026/03/28/HistoryofWesternPhilosophy2/" title="梯利《西方哲学史》笔记（二）"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-right"><div class="info-1"><div class="info-item-1">下一篇</div><div class="info-item-2">梯利《西方哲学史》笔记（二）</div></div><div class="info-2"><div class="info-item-1">  第二章 智者时期的希腊哲学</div></div></div></a></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><a class="pagination-related" href="/2026/01/23/HistoryofWesternPhilosophy1/" title="梯利《西方哲学史》笔记（一）"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2026-01-23</div><div class="info-item-2">梯利《西方哲学史》笔记（一）</div></div><div class="info-2"><div class="info-item-1">  这是我阅读梯利版《西方哲学史》的笔记，由于博客网站的封闭性，我无需作太多解释。但总之我需要提到：第一我阅读的进度不会比我写作的进度更快多少，第二我所做的主要工作都不在书本上出现。尽管我尽力了，但我没有严谨考察我所提到的每一件事，如果你注意到有错误的地方，请指正。 提示：本页面的排版设计遵循桌面端，移动端可能出现少数引文框顺序排版错误，请使用桌面端以取得最佳阅览效果。  第一章 前智者时期的希腊哲学古希腊哲学可以分为四个阶段，它们之间多以一个大哲学家的出现作为划分，但更起决定性作用的社会因素，及引起这些社会变化等重大事件，比如战争，也不可能被哲学史忽视。我将按照时间和本书记叙的顺序，也是按照叙述历史应有的线索来叙述，因此先不作介绍。第一个时期是智者以前的时期，它的开始在于伊奥尼亚学派摆脱神学的牵绊，结束于苏格拉底。 可以想到，在这一阶段以前，希腊的神学占据着重要的地位。至于他们的神话、诗歌、《荷马史诗》和其他有趣的历史，此书没有太多提及。而我个人对此缺乏认识，也缺乏资料，于是也就此跳过。    米利都学派第三章 实体的问题  小亚细亚是人类文明早期的沃土，介于两大古文明和西方文...</div></div></div></a><a class="pagination-related" href="/2026/02/16/Requiem_for_a_Dream/" title="Movie Review on *Requiem for a Dream*"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2026-02-16</div><div class="info-item-2">Movie Review on *Requiem for a Dream*</div></div><div class="info-2"><div class="info-item-1">  我歧视多数人作伦理评价时表现出以“上帝”自居的高傲，这是一种对自己而完美全知全能的假定。我想就算没有这种假定，我们应该也有以一个平等的人的身份作出伦理评价的能力。在对Requiem for a Dream的影评上，这种高傲表现为利用“堕落”、“禁欲”、“压抑”等概念将自己和电影人物的人格建起高墙——在巴别塔中戏看一个故事。我不认为在一切不确定中，此类屏障能护他们周全。 电影制作关于电影制作，仅靠此部Darren导演的第二部作品，就足以得出“Darren是一位导演天才”的结论。他充分利用毒品、精神疾病的话题发挥镜头和音乐的创造力，传递惊人的视听体验，赋予物象特别的艺术效果，营造诡谲切要的现实主义心理艺术——这使他几乎成为电影界的陀思妥耶夫斯基。这绝对是一部在电影艺术一侧的标杆作品。 剧本情节关于剧本情节，情节设计可圈可点，巧妙之处不胜枚举。四个关系相近、同样沾染毒瘾之人的命运书写四条独立完整的剧情线，又在恰当而戏剧的时间点以极冷静的风格交会。我爱冷静。 影片内涵关于影片内涵，我要在此展开。由于我丝毫不觉得电影在涵养精神、仿射社会的文化功能层面比文学逊色，因此影片的内涵值得我大谈...</div></div></div></a><a class="pagination-related" href="/2026/03/28/HistoryofWesternPhilosophy2/" title="梯利《西方哲学史》笔记（二）"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2026-03-28</div><div class="info-item-2">梯利《西方哲学史》笔记（二）</div></div><div class="info-2"><div class="info-item-1">  第二章 智者时期的希腊哲学</div></div></div></a></div></div><hr class="custom-hr"/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div id="waline-wrap"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="/img/me.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">zhgzn</div><div class="author-info-description"></div><div class="site-data"><a href="/archives/"><div class="headline">文章</div><div class="length-num">10</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">8</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%89%8D%E7%BD%AE%E7%9F%A5%E8%AF%86"><span class="toc-number">1.</span> <span class="toc-text">前置知识</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#CPU%E3%80%81CPU%E5%AF%84%E5%AD%98%E5%99%A8%E5%92%8C%E5%86%85%E5%AD%98"><span class="toc-number">1.1.</span> <span class="toc-text">CPU、CPU寄存器和内存</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%86%85%E5%AD%98%E6%A0%88%E4%B8%8E%E5%AD%97%E8%8A%82%E5%BA%8F"><span class="toc-number">1.2.</span> <span class="toc-text">内存栈与字节序</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BB%8E%E4%B8%80%E4%B8%AA%E5%9F%BA%E7%A1%80%E7%9A%84%E6%B1%87%E7%BC%96%E7%A8%8B%E5%BA%8F%E5%BC%80%E5%A7%8B"><span class="toc-number">2.</span> <span class="toc-text">从一个基础的汇编程序开始</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%85%AD%E7%A7%8D%E6%8C%87%E4%BB%A4"><span class="toc-number">3.</span> <span class="toc-text">六种指令</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#add-sub-R-Register-%E5%9E%8B%E6%8C%87%E4%BB%A4"><span class="toc-number">3.1.</span> <span class="toc-text">add &amp; sub R(Register)型指令</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#addi-I-Immediate-%E5%9E%8B%E6%8C%87%E4%BB%A4"><span class="toc-number">3.2.</span> <span class="toc-text">addi I(Immediate)型指令</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#lw-L-Load-%E5%9E%8B%E6%8C%87%E4%BB%A4"><span class="toc-number">3.3.</span> <span class="toc-text">lw L(Load)型指令</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#sw-S-Store-%E5%9E%8B%E6%8C%87%E4%BB%A4"><span class="toc-number">3.4.</span> <span class="toc-text">sw S(Store)型指令</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#jal-J-Jump-%E5%9E%8B%E6%8C%87%E4%BB%A4"><span class="toc-number">3.5.</span> <span class="toc-text">jal J(Jump)型指令</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#beq-bne-blt-bge-B-Branch-%E5%9E%8B%E6%8C%87%E4%BB%A4"><span class="toc-number">3.6.</span> <span class="toc-text">beq, bne, blt &amp; bge B(Branch)型指令</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#U%E5%9E%8B%E6%8C%87%E4%BB%A4"><span class="toc-number">3.7.</span> <span class="toc-text">U型指令</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/07/30/assembly/" title="学习汇编语言">学习汇编语言</a><time datetime="2026-07-30T13:57:44.000Z" title="发表于 2026-07-30 21:57:44">2026-07-30</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/03/28/HistoryofWesternPhilosophy2/" title="梯利《西方哲学史》笔记（二）">梯利《西方哲学史》笔记（二）</a><time datetime="2026-03-28T09:37:35.000Z" title="发表于 2026-03-28 17:37:35">2026-03-28</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/03/17/AGlobalHistoryV/" title="浅记《全球通史》part5">浅记《全球通史》part5</a><time datetime="2026-03-16T16:00:00.000Z" title="发表于 2026-03-17 00:00:00">2026-03-17</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/03/10/AGlobalHistoryIV/" title="浅记《全球通史》part4">浅记《全球通史》part4</a><time datetime="2026-03-09T16:00:00.000Z" title="发表于 2026-03-10 00:00:00">2026-03-10</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/03/01/AGlobalHistoryIII/" title="浅记《全球通史》part3">浅记《全球通史》part3</a><time datetime="2026-02-28T16:00:00.000Z" title="发表于 2026-03-01 00:00:00">2026-03-01</time></div></div></div></div></div></div></main><footer id="footer"><div class="footer-other"><div class="footer-copyright"><span class="copyright">&copy;&nbsp;2025 - 2026 By zhgzn</span><span class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo 7.3.0</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly 5.5.3</a></span></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="日间和夜间模式切换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="前往评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=5.5.3"></script><script src="/js/main.js?v=5.5.3"></script><div class="js-pjax"><script>(() => {
+  const loadMathjax = () => {
+    if (!window.MathJax) {
+      window.MathJax = {
+        loader: {
+          load: [
+            // Four font extension packages (optional)
+            //- '[tex]/bbm',
+            //- '[tex]/bboldx',
+            //- '[tex]/dsfont',
+            '[tex]/mhchem'
+          ],
+          paths: {
+            'mathjax-newcm': '[mathjax]/../@mathjax/mathjax-newcm-font',
+
+            //- // Four font extension packages (optional)
+            //- 'mathjax-bbm-extension': '[mathjax]/../@mathjax/mathjax-bbm-font-extension',
+            //- 'mathjax-bboldx-extension': '[mathjax]/../@mathjax/mathjax-bboldx-font-extension',
+            //- 'mathjax-dsfont-extension': '[mathjax]/../@mathjax/mathjax-dsfont-font-extension',
+            'mathjax-mhchem-extension': '[mathjax]/../@mathjax/mathjax-mhchem-font-extension'
+          }
+        },
+        output: {
+          font: 'mathjax-newcm',
+        },
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']],
+          tags: 'none',
+          packages: {
+            '[+]': [
+              'mhchem'
+            ]
+          }
+        },
+        chtml: {
+          scale: 1.1
+        },
+        options: {
+          enableMenu: true,
+          menuOptions: {
+            settings: {
+              enrich: false  // Turn off Braille and voice narration text automatic generation
+            }
+          },
+          renderActions: {
+            findScript: [10, doc => {
+              for (const node of document.querySelectorAll('script[type^="math/tex"]')) {
+                const display = !!node.type.match(/; *mode=display/)
+                const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display)
+                const text = document.createTextNode('')
+                node.parentNode.replaceChild(text, node)
+                math.start = {node: text, delim: '', n: 0}
+                math.end = {node: text, delim: '', n: 0}
+                doc.math.push(math)
+              }
+            }, '']
+          }
+        }
+      }
+
+      const script = document.createElement('script')
+      script.src = 'https://cdn.jsdelivr.net/npm/mathjax@4.0.0/tex-mml-chtml.min.js'
+      script.id = 'MathJax-script'
+      script.async = true
+      document.head.appendChild(script)
+    } else {
+      MathJax.startup.document.state(0)
+      MathJax.texReset()
+      MathJax.typesetPromise()
+    }
+  }
+
+  btf.addGlobalFn('encrypt', loadMathjax, 'mathjax')
+  window.pjax ? loadMathjax() : window.addEventListener('load', loadMathjax)
+})()</script><script>(() => {
   let initFn = window.walineFn || null
   const isShuoshuo = GLOBAL_CONFIG_SITE.pageType === 'shuoshuo'
   const option = null
