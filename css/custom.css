@@ -1,145 +1,50 @@
+/*
+ * 博客自定义样式目录
+ *
+ * 1. 引用块
+ * 2. 通用工具类
+ * 3. 可复用的文章布局
+ * 4. 汇编语言文章
+ */
+
+/* ==========================================================================
+   1. 引用块
+   ========================================================================== */
+
+/* 引用块共用重置 */
 #post blockquote[class],
 .post-content blockquote[class] {
-    font-style: normal !important; /* 强制取消斜体 */
+    font-style: normal !important;
 }
 
-/* ========== “book” 类引用块 ========== */
-/* 浅紫色系，用于书籍、文献等引用 */
+/* 书籍引用与补充说明 */
 #post blockquote.book,
-.post-content blockquote.book {
-    border-left: 5px solid #a9a1b0; /* 侧边颜色 */
-    background-color: #f5f2ee; /* 底色 */
-    border-radius: 8px;
-    padding: 20px 25px;
-    margin: 20px 0;
-    color: #333; /* 深色文字确保可读性 */
-}
-
-/* ========== “other” 类引用块 ========== */
-/* 浅绿色系，用于其他说明、提示等 */
+.post-content blockquote.book,
 #post blockquote.other,
 .post-content blockquote.other {
-    border-left: 5px solid #c8d7b4; /* 侧边颜色 */
-    background-color: #e3e9d7; /* 底色 */
     border-radius: 8px;
     padding: 20px 25px;
     margin: 20px 0;
-    color: #333; /* 深色文字确保可读性 */
+    color: #333;
 }
 
-/* ========== 深色模式适配 ========== */
-/* 在深色模式下，保持完全相同的颜色，但微调文字颜色以适配深背景 */
-[data-theme="dark"] #post blockquote.book,
-[data-theme="dark"] .post-content blockquote.book {
-    border-left-color: #c3b1e1;
-    background-color: #E6E6FA;
-    color: #222; /* 在深色模式下，保持引用框内文字为深色 */
+#post blockquote.book,
+.post-content blockquote.book {
+    border-left: 5px solid #a9a1b0;
+    background-color: #f5f2ee;
 }
 
-[data-theme="dark"] #post blockquote.other,
-[data-theme="dark"] .post-content blockquote.other {
-    border-left-color: #afe1af;
-    background-color: #ecffdc;
-    color: #222; /* 在深色模式下，保持引用框内文字为深色 */
+#post blockquote.other,
+.post-content blockquote.other {
+    border-left: 5px solid #c8d7b4;
+    background-color: #e3e9d7;
 }
 
-/* ========== 极简“提示框”样式 ========== */
+/* 短提示与长提示 */
 #post blockquote.tip,
-.post-content blockquote.tip {
-    /* 核心：取消所有侧边条，只保留上边框 */
-    border-left: none !important;
-    border-right: none !important;
-    border-bottom: 1px solid #e0e0e6; /* 保留浅色底边 */
-    border-top: 4px solid #4CAF50; /* 核心：醒目的上边框，绿色示例，可更改 */
-    /* 背景与内边距 */
-    background-color: #f8f9fa; /* 比正文稍浅的底色 */
-    border-radius: 6px; /* 圆角 */
-    padding: 20px 25px; /* 舒适的内边距 */
-    margin: 25px 0; /* 外边距 */
-    /* 文字样式 */
-    color: #333; /* 正文颜色 */
-    font-style: normal; /* 确保不是斜体 */
-}
-
-/* ========== 深色模式适配 ========== */
-[data-theme="dark"] #post blockquote.tip,
-[data-theme="dark"] .post-content blockquote.tip {
-    border-top-color: #66BB6A; /* 深色模式下调整上边框颜色 */
-    background-color: #1a1a1a;
-    border-bottom-color: #444;
-    color: #ccc;
-}
-
-/* 更新后的 .note 样式 - 缩小行距与上下边距 */
-#post blockquote.note,
-.post-content blockquote.note {
-    border: none !important;
-    background-color: rgba(141, 195, 81, 0.08); /* 保持原有的浅绿底色 */
-    border-radius: 6px;
-    /* 调整内边距：上方 下方 | 左侧 右侧 */
-    padding: 12px 22px !important; /* 核心：改小上下内边距（原为18px 22px） */
-    margin: 20px 0;
-    color: #555;
-    font-style: normal;
-    box-shadow: inset 0 0 0 1px rgba(141, 195, 81, 0.05);
-}
-
-/* 深色模式适配 */
-[data-theme="dark"] #post blockquote.note,
-[data-theme="dark"] .post-content blockquote.note {
-    background-color: rgba(141, 195, 81, 0.05);
-    color: #bbb;
-    box-shadow: inset 0 0 0 1px rgba(141, 195, 81, 0.02);
-}
-
-/* ========== 右侧浮动“说明框”样式 ========== */
-/* 此样式适用于桌面端等宽屏设备 */
-@media screen and (min-width: 768px) {
-    #post blockquote.note.float-right,
-    .post-content blockquote.note.float-right {
-        /* 核心浮动属性 */
-        float: right;
-        clear: right; /* 防止多个浮动框重叠 */
-        /* 固定宽度，给左侧正文留出空间 */
-        width: 280px; /* 你可以调整这个宽度值 */
-        /* 定位和间距 */
-        margin: 5px 0 20px 30px !important; /* 上、右、下、左 */
-        /* 视觉样式调整（保持你之前的底色、圆角等） */
-        background-color: rgba(141, 195, 81, 0.08);
-        border: none;
-        border-radius: 6px;
-        padding: 15px;
-        /* 确保字体大小合适 */
-        font-size: 0.9em;
-        /* 防止父容器高度塌陷的hack */
-        box-sizing: border-box;
-    }
-    /* 可选：为左侧正文区域增加一点右边距，防止文字紧贴浮动框 */
-    #post,
-    .post-content {
-        overflow: auto; /* 触发BFC，包含浮动元素 */
-    }
-}
-
-/* ========== 移动端适配：屏幕变窄时取消浮动，变回上下布局 ========== */
-@media screen and (max-width: 767px) {
-    #post blockquote.note.float-right,
-    .post-content blockquote.note.float-right {
-        float: none;
-        width: auto;
-        margin: 20px 0 !important; /* 恢复为上下外边距 */
-    }
-}
-
-/* ========== 长文本提示框样式 - .tip-long ========== */
-/* 继承 .tip 的所有基础样式，但增加底部边框 */
+.post-content blockquote.tip,
 #post blockquote.tip-long,
 .post-content blockquote.tip-long {
-    /* 确保拥有 .tip 的全部基础样式 */
-    border-top: 4px solid #4CAF50 !important;
-    border-left: none !important;
-    border-right: none !important;
-    border-bottom: 4px solid #4CAF50 !important; /* 核心：增加底部边框 */
     background-color: #f8f9fa;
     border-radius: 6px;
     padding: 20px 25px;
@@ -148,7 +53,70 @@
     font-style: normal;
 }
 
-/* ========== 深色模式适配 ========== */
+#post blockquote.tip,
+.post-content blockquote.tip {
+    border-top: 4px solid #4CAF50;
+    border-right: none !important;
+    border-bottom: 1px solid #e0e0e6;
+    border-left: none !important;
+}
+
+#post blockquote.tip-long,
+.post-content blockquote.tip-long {
+    border-top: 4px solid #4CAF50 !important;
+    border-right: none !important;
+    border-bottom: 4px solid #4CAF50 !important;
+    border-left: none !important;
+}
+
+/* 紧凑说明框 */
+#post blockquote.note,
+.post-content blockquote.note {
+    border: none !important;
+    border-radius: 6px;
+    margin: 20px 0;
+    padding: 12px 22px !important;
+    background-color: rgba(141, 195, 81, 0.08);
+    box-shadow: inset 0 0 0 1px rgba(141, 195, 81, 0.05);
+    color: #555;
+    font-style: normal;
+}
+
+/* 透明背景引用 */
+#post blockquote.transparent,
+.post-content blockquote.transparent {
+    border-left: 5px solid #88bfcc;
+    border-radius: 8px;
+    margin: 20px 0;
+    padding: 20px 25px;
+    background-color: transparent;
+    color: #333;
+    font-style: normal;
+}
+
+/* 深色模式 */
+[data-theme="dark"] #post blockquote.book,
+[data-theme="dark"] .post-content blockquote.book {
+    border-left-color: #c3b1e1;
+    background-color: #E6E6FA;
+    color: #222;
+}
+
+[data-theme="dark"] #post blockquote.other,
+[data-theme="dark"] .post-content blockquote.other {
+    border-left-color: #afe1af;
+    background-color: #ecffdc;
+    color: #222;
+}
+
+[data-theme="dark"] #post blockquote.tip,
+[data-theme="dark"] .post-content blockquote.tip {
+    border-top-color: #66BB6A;
+    border-bottom-color: #444;
+    background-color: #1a1a1a;
+    color: #ccc;
+}
+
 [data-theme="dark"] #post blockquote.tip-long,
 [data-theme="dark"] .post-content blockquote.tip-long {
     border-top-color: #66BB6A !important;
@@ -157,104 +125,175 @@
     color: #ccc;
 }
 
-/* 弱化文字类 .muted */
-.muted {
-    color: #aaa !important;
-    font-size: 0.8em !important;
-    font-style: normal !important;
+[data-theme="dark"] #post blockquote.note,
+[data-theme="dark"] .post-content blockquote.note {
+    background-color: rgba(141, 195, 81, 0.05);
+    box-shadow: inset 0 0 0 1px rgba(141, 195, 81, 0.02);
+    color: #bbb;
 }
 
-/* 深色模式适配 */
-[data-theme="dark"] .muted {
-    color: #b0b0b0 !important;
+[data-theme="dark"] #post blockquote.transparent,
+[data-theme="dark"] .post-content blockquote.transparent {
+    border-left-color: #b0e0ff;
+    color: #ccc;
 }
 
+/* 浮动引用布局 */
+@media screen and (min-width: 768px) {
+    #post blockquote.note.float-right,
+    .post-content blockquote.note.float-right,
+    #post blockquote.tip-long.float-right,
+    .post-content blockquote.tip-long.float-right,
+    #post blockquote.tip.float-left,
+    .post-content blockquote.tip.float-left {
+        width: 280px;
+        padding: 15px;
+        box-sizing: border-box;
+        font-size: 0.9em;
+    }
 
-/* 通用居中工具类，可用于任何文本元素 */
-.ct {
-    text-align: center !important;
+    #post blockquote.note.float-right,
+    .post-content blockquote.note.float-right {
+        border: none;
+        border-radius: 6px;
+        background-color: rgba(141, 195, 81, 0.08);
+    }
+
+    #post blockquote.note.float-right,
+    .post-content blockquote.note.float-right,
+    #post blockquote.tip-long.float-right,
+    .post-content blockquote.tip-long.float-right {
+        float: right;
+        clear: right;
+        margin: 5px 0 20px 30px !important;
+    }
+
+    #post blockquote.tip.float-left,
+    .post-content blockquote.tip.float-left {
+        float: left;
+        clear: left;
+        margin: 5px 30px 20px 0 !important;
+    }
+
+    #post,
+    .post-content {
+        overflow: auto;
+    }
 }
 
+@media screen and (max-width: 767px) {
+    #post blockquote.note.float-right,
+    .post-content blockquote.note.float-right,
+    #post blockquote.tip-long.float-right,
+    .post-content blockquote.tip-long.float-right,
+    #post blockquote.tip.float-left,
+    .post-content blockquote.tip.float-left {
+        float: none;
+        width: auto;
+        margin: 20px 0 !important;
+    }
 
-/* 用于突出下方标题的章节分割线 - .line-mid (中性灰色) */
-.line-mid {
-    border: none;
-    height: 2px;
-    /* 核心修改：改为灰色渐变 */
-    background: linear-gradient(to right, transparent, #aaa, transparent);
-    width: 70%;
-    margin: 3em auto 0.8em !important;
-    border-radius: 1px;
-}
-/* 深色模式适配 */
-[data-theme="dark"] .line-mid {
-    background: linear-gradient(to right, transparent, #888, transparent);
-}
+    #post blockquote.tip-long.float-right,
+    .post-content blockquote.tip-long.float-right,
+    #post blockquote.tip.float-left,
+    .post-content blockquote.tip.float-left {
+        padding: 20px 25px;
+    }
 
-/* 仅对包裹在 .indent-this-post 内的段落缩进 */
-.indent-this-post p {
-    text-indent: 2em;
-}
-
-.indent-this-post h1,
-.indent-this-post h2,
-.indent-this-post h3,
-.indent-this-post h4,
-.indent-this-post h5,
-.indent-this-post h6 {
-    text-align: center !important; /* 使用 !important 确保覆盖其他样式 */
+    #post blockquote.tip.float-left,
+    .post-content blockquote.tip.float-left {
+        font-size: 1em;
+    }
 }
 
-/* 右对齐工具类 */
-.right-al {
-    text-align: right !important;
-}
+/* ==========================================================================
+   2. 通用工具类
+   ========================================================================== */
 
-/*在缩进的情况下绝对居中*/
-.indent-this-post p.text-center { text-align: center !important; text-indent: 0 !important; }
-
-/* 集成式类：弱化、居中、紧凑 */
+/* 弱化文字 */
+.muted,
 .muted-center-compact {
-    /* 1. 继承 .muted 的核心样式 */
     color: #aaa !important;
     font-size: 0.8em !important;
     font-style: normal !important;
-
-    /* 2. 实现绝对居中与重置 */
-    text-align: center !important;
-    display: block !important; /* 确保作为块级元素居中 */
-    margin-left: auto !important;
-    margin-right: auto !important;
-    text-indent: 0 !important; /* 关键：强制清除任何可能的首行缩进 */
-
-    /* 3. 缩小与上一个段落的行距（上边距） */
-    margin-top: -1.75em !important; /* 可根据感觉微调，标准段落间距通常为1em或1.5em */
-    margin-bottom: 1em !important; /* 保持与下一个段落的正常距离 */
-
-    /* 可选：添加盒模型计算方式，确保稳定 */
-    box-sizing: border-box !important;
-    padding: 0 !important; /* 确保内边距不影响居中计算 */
-    width: 100%; /* 确保宽度撑满，居中基准是父容器 */
 }
 
-/* 深色模式适配 */
+[data-theme="dark"] .muted,
 [data-theme="dark"] .muted-center-compact {
     color: #b0b0b0 !important;
 }
 
-/* 为单篇文章设置更大的字号和段落首行缩进 */
+/* 对齐 */
+.ct {
+    text-align: center !important;
+}
+
+.right-al {
+    text-align: right !important;
+}
+
+.muted-center-compact {
+    display: block !important;
+    width: 100%;
+    box-sizing: border-box !important;
+    margin-top: -1.75em !important;
+    margin-right: auto !important;
+    margin-bottom: 1em !important;
+    margin-left: auto !important;
+    padding: 0 !important;
+    text-align: center !important;
+    text-indent: 0 !important;
+}
+
+/* 章节分隔线 */
+.line-mid {
+    width: 70%;
+    height: 2px;
+    border: none;
+    border-radius: 1px;
+    margin: 3em auto 0.8em !important;
+    background: linear-gradient(to right, transparent, #aaa, transparent);
+}
+
+[data-theme="dark"] .line-mid {
+    background: linear-gradient(to right, transparent, #888, transparent);
+}
+
+/* ==========================================================================
+   3. 可复用的文章布局
+   ========================================================================== */
+
+/* 段落缩进 */
+.indent-this-post p {
+    text-indent: 2em;
+}
+
+/* 标题居中独立于段落缩进，可按需组合。 */
+.centered-article-headings h1,
+.centered-article-headings h2,
+.centered-article-headings h3,
+.centered-article-headings h4,
+.centered-article-headings h5,
+.centered-article-headings h6 {
+    text-align: center !important;
+}
+
+.text-center {
+    text-align: center !important;
+    text-indent: 0 !important;
+}
+
+/* 大字号文章包装类 */
 .article-larger-font {
-    font-size: 16px;   /* 正文基础字号，可按需调整 */
-    line-height: 1.8;  /* 行高，提升阅读舒适度 */
+    font-size: 16px;
+    line-height: 1.8;
 }
 
-/* 文章内的普通段落：首行缩进2字符 + 段后间距 */
 .article-larger-font p {
-    text-indent: 2em;  /* 首行缩进两个汉字字符的宽度 */
-    margin: 0 0 1em 0; /* 段落下边距，让段落之间更清晰（可选） */
+    margin: 0 0 1em 0;
+    text-indent: 2em;
 }
 
-/* 以下元素不需要缩进，故重置为0 */
 .article-larger-font h1,
 .article-larger-font h2,
 .article-larger-font h3,
@@ -268,99 +307,20 @@
 .article-larger-font figure,
 .article-larger-font img,
 .article-larger-font .footnote,
-.article-larger-font .small-text {   /* 你之前提到的特殊元素 */
-    text-indent: 0 !important;       /* 确保不缩进，!important 仅为保险，通常不需要 */
+.article-larger-font .small-text {
+    text-indent: 0 !important;
 }
 
-/* ========== 右侧浮动“长提示框”样式 ========== */
-/* 适用于 .tip-long 元素添加 .float-right 类，使其浮动在右侧 */
-@media screen and (min-width: 768px) {
-    #post blockquote.tip-long.float-right,
-    .post-content blockquote.tip-long.float-right {
-        float: right;
-        clear: right;
-        width: 280px; /* 可根据需要调整宽度 */
-        margin: 5px 0 20px 30px !important; /* 上、右、下、左 */
-        padding: 15px; /* 适应窄栏的紧凑内边距 */
-        font-size: 0.9em; /* 稍微缩小字体 */
-        box-sizing: border-box;
-        /* 边框和背景色由 .tip-long 本身提供，无需重复 */
-    }
-    /* 触发父容器 BFC 以包含浮动 */
-    #post,
-    .post-content {
-        overflow: auto;
-    }
-}
+/* ==========================================================================
+   4. 汇编语言文章
+   ========================================================================== */
 
-@media screen and (max-width: 767px) {
-    #post blockquote.tip-long.float-right,
-    .post-content blockquote.tip-long.float-right {
-        float: none;
-        width: auto;
-        margin: 20px 0 !important; /* 恢复为上下外边距 */
-        padding: 20px 25px; /* 恢复 .tip-long 的原始内边距 */
-    }
-}
-
-/* ========== 透明背景引用块 ========== */
-/* 左边框使用 #88bfcc，背景完全透明，适用于需要融入页面背景的场景 */
-#post blockquote.transparent,
-.post-content blockquote.transparent {
-    border-left: 5px solid #88bfcc;   /* 侧边颜色 */
-    background-color: transparent;     /* 完全透明背景 */
-    border-radius: 8px;                /* 圆角 */
-    padding: 20px 25px;                /* 舒适内边距 */
-    margin: 20px 0;                    /* 上下外边距 */
-    color: #333;                        /* 深色文字，确保浅色背景下可读 */
-    font-style: normal;                 /* 保持正体 */
-}
-
-/* 深色模式适配 */
-[data-theme="dark"] #post blockquote.transparent,
-[data-theme="dark"] .post-content blockquote.transparent {
-    border-left-color: #b0e0ff;        /* 深色模式下边框稍亮，保持可见性 */
-    color: #ccc;                        /* 文字颜色调整为浅色，适配深色背景 */
-}
-
-/* ========== 左侧浮动“提示框”样式 ========== */
-/* 适用于 .tip 元素添加 .float-left 类，使其浮动在左侧，与右侧浮动 note 对称 */
-@media screen and (min-width: 768px) {
-    #post blockquote.tip.float-left,
-    .post-content blockquote.tip.float-left {
-        float: left;
-        clear: left;              /* 防止多个左浮动框重叠 */
-        width: 280px;              /* 与 .note.float-right 保持一致，可根据需要调整 */
-        margin: 5px 30px 20px 0 !important; /* 上、右、下、左：右侧留出间隔，左侧与正文对齐 */
-        padding: 15px;             /* 内边距适当缩小以适应窄栏 */
-        font-size: 0.9em;
-        box-sizing: border-box;
-        /* 边框和背景色由 .tip 本身提供，此处无需重复 */
-    }
-    /* 确保父容器包含浮动 */
-    #post,
-    .post-content {
-        overflow: auto;
-    }
-}
-
-/* 移动端：取消浮动，恢复块级流动 */
-@media screen and (max-width: 767px) {
-    #post blockquote.tip.float-left,
-    .post-content blockquote.tip.float-left {
-        float: none;
-        width: auto;
-        margin: 20px 0 !important;   /* 恢复上下外边距 */
-        padding: 20px 25px;           /* 恢复 .tip 的原始内边距 */
-        font-size: 1em;               /* 恢复默认字体大小 */
-    }
-}
-
-/* ========== 汇编语言文章：代码块、数学公式与正文排版 ========== */
 /*
- * 以文章级 .assembly-post 为作用域，避免覆盖旧文章与 Butterfly 的全站样式。
- * 多行代码继续复用主题的高亮、复制按钮和语言栏，只调整视觉层。
+ * 以下规则全部限定在 .assembly-post 内。
+ * 其他文章继续使用 Butterfly 默认样式和上方的通用文章样式。
  */
+
+/* 4.1 设计变量与阅读布局 */
 body:has(.assembly-post) {
     --assembly-reading-font: Georgia, "Times New Roman", "Noto Serif SC", "Source Han Serif SC", "STZhongsong", "Songti SC", "SimSun", serif;
 }
@@ -388,7 +348,6 @@ body:has(.assembly-post) {
     line-height: 1.85;
 }
 
-/* 本篇正文标题与页面主标题统一使用学术型衬线字体。 */
 .assembly-post h1,
 .assembly-post h2,
 .assembly-post h3,
@@ -405,7 +364,7 @@ body:has(.assembly-post) #post-info .post-title {
     font-size: calc(2.5em + 2pt);
 }
 
-/* 多行围栏代码：近黑底色、紧凑工具栏与统一字体。 */
+/* 4.2 多行围栏代码 */
 .assembly-post figure.highlight {
     --hl-bg: var(--assembly-code-bg);
     --hl-color: var(--assembly-code-text);
@@ -443,7 +402,7 @@ body:has(.assembly-post) #post-info .post-title {
     font-size: 10px !important;
 }
 
-/* 本篇多行代码只保留语言标识，不显示展开与复制功能。 */
+/* 本篇只保留语言标签，隐藏展开与复制功能。 */
 .assembly-post figure.highlight .highlight-tools .expand,
 .assembly-post figure.highlight .highlight-tools .copy-button,
 .assembly-post figure.highlight .code-expand-btn {
@@ -459,7 +418,6 @@ body:has(.assembly-post) #post-info .post-title {
     line-height: 22px !important;
 }
 
-/* RISC-V 代码块显示统一的语言名；保留 mipsasm 选择器兼容旧文章。 */
 .assembly-post figure.highlight.riscv .code-lang,
 .assembly-post figure.highlight.mipsasm .code-lang,
 .assembly-post figure.highlight.text .code-lang,
@@ -529,7 +487,7 @@ body:has(.assembly-post) #post-info .post-title {
     padding: 11px 14px !important;
 }
 
-/* GitHub Dark 风格的轻量高亮色，覆盖 C 与汇编会用到的 token。 */
+/* 深色代码块的语法高亮 */
 .assembly-post figure.highlight .comment,
 .assembly-post figure.highlight .quote {
     color: #8b949e !important;
@@ -578,10 +536,7 @@ body:has(.assembly-post) #post-info .post-title {
     color: #e6edf3 !important;
 }
 
-/*
- * 单行代码与多行代码共用黑底、边框和字体。
- * 独立成段与嵌在句中的 code 使用完全相同的紧凑尺寸。
- */
+/* 4.3 行内代码 */
 .assembly-post p code,
 .assembly-post li code,
 .assembly-post dd code,
@@ -601,24 +556,6 @@ body:has(.assembly-post) #post-info .post-title {
     text-shadow: none !important;
 }
 
-/* 公式字号与正文一致；显示公式不继承首行缩进并允许窄屏横向查看。 */
-.assembly-post mjx-container {
-    font-size: 1em !important;
-    text-indent: 0 !important;
-}
-
-.assembly-post mjx-container[display="true"] {
-    overflow-x: auto;
-    overflow-y: hidden;
-    margin: 1.05em 0 !important;
-    padding: 0.15em 0;
-}
-
-.assembly-post p:has(> mjx-container[display="true"]) {
-    text-indent: 0 !important;
-}
-
-/* 单行 RISC-V 使用与多行代码相同的语义染色，并适配浅灰底色。 */
 .assembly-post code.assembly-inline-highlight .comment,
 .assembly-post code.assembly-inline-highlight .quote {
     color: #6e7781 !important;
@@ -667,7 +604,24 @@ body:has(.assembly-post) #post-info .post-title {
     color: var(--assembly-inline-text) !important;
 }
 
-/* 字节序表格：地址横向递增，便于直接比较高、低位字节的落点。 */
+/* 4.4 MathJax 公式 */
+.assembly-post mjx-container {
+    font-size: 1em !important;
+    text-indent: 0 !important;
+}
+
+.assembly-post mjx-container[display="true"] {
+    overflow-x: auto;
+    overflow-y: hidden;
+    margin: 1.05em 0 !important;
+    padding: 0.15em 0;
+}
+
+.assembly-post p:has(> mjx-container[display="true"]) {
+    text-indent: 0 !important;
+}
+
+/* 4.5 字节序表格 */
 .assembly-post .endian-table-caption {
     margin: 1.5em 0 0.6em !important;
     color: #6b7683;
@@ -750,7 +704,6 @@ body:has(.assembly-post) #post-info .post-title {
     background: #edf6ff;
 }
 
-/* 深色模式只切换本篇表格变量；代码本身始终保持黑底。 */
 [data-theme="dark"] .assembly-post {
     --assembly-table-bg: #111820;
     --assembly-table-alt: #151e28;
@@ -768,6 +721,7 @@ body:has(.assembly-post) #post-info .post-title {
     background: #1a2b3a;
 }
 
+/* 4.6 移动端适配 */
 @media screen and (max-width: 767px) {
     .assembly-post {
         padding-right: 4px;
