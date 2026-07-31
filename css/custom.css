@@ -601,39 +601,20 @@ body:has(.assembly-post) #post-info .post-title {
     text-shadow: none !important;
 }
 
-/* MathJax 显示公式不继承中文段落的首行缩进，并允许窄屏横向查看。 */
+/* 公式字号与正文一致；显示公式不继承首行缩进并允许窄屏横向查看。 */
+.assembly-post mjx-container {
+    font-size: 1em !important;
+    text-indent: 0 !important;
+}
+
 .assembly-post mjx-container[display="true"] {
     overflow-x: auto;
     overflow-y: hidden;
     margin: 1.05em 0 !important;
     padding: 0.15em 0;
-    text-indent: 0 !important;
 }
 
 .assembly-post p:has(> mjx-container[display="true"]) {
-    text-indent: 0 !important;
-}
-
-/*
- * 公式以原生 MathML 作为可见兜底；MathJax 正常加载时仍会接管排版。
- * 因而即便脚本或 CDN 暂时不可用，也不会再显示未翻译的 TeX 源码。
- */
-.assembly-post math.assembly-math {
-    display: block;
-    overflow-x: auto;
-    overflow-y: hidden;
-    margin: 1.05em auto;
-    padding: 0.15em 0;
-    font-family: "STIX Two Math", "Cambria Math", "Times New Roman", serif;
-    font-size: 1.08em;
-    text-align: center;
-    text-indent: 0 !important;
-}
-
-.assembly-post math.assembly-math-inline {
-    font-family: "STIX Two Math", "Cambria Math", "Times New Roman", serif;
-    font-size: 1em;
-    vertical-align: -0.08em;
     text-indent: 0 !important;
 }
 
